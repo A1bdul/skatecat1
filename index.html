@@ -39,15 +39,49 @@
     color: #333; /* Couleur du texte du lien (facultatif) */
 }
 
-        .bgvideo {
+
+        .ball { 
             position: fixed;
             top: 0;
             left: 0;
             width: 110%; 
             height: 130%;
             z-index: -1;
-        }
+            animation: bounce 0.5s; 
+            animation-direction: alternate; 
+            animation-timing-function: cubic-bezier(.5, 0.05, 1, .5); 
+            animation-iteration-count: infinite; 
+        } 
 
+        @keyframes bounce { 
+            from { 
+                transform: translate3d(0, 0, 0); 
+            } 
+            to { 
+                transform: translate3d(0, 200px, 0); 
+            } 
+        } 
+        /* Prefix Support */ 
+
+        ball { 
+            -webkit-animation-name: bounce; 
+            -webkit-animation-duration: 0.5s; 
+            -webkit-animation-direction: alternate; 
+            -webkit-animation-timing-function: cubic-bezier( 
+            .5, 0.05, 1, .5); 
+            -webkit-animation-iteration-count: infinite; 
+        } 
+
+        @-webkit-keyframes bounce { 
+            from { 
+                -webkit-transform: translate3d(0, 0, 0); 
+                transform: translate3d(0, 0, 0); 
+            } 
+            to { 
+                -webkit-transform: translate3d(0, 200px, 0); 
+                transform: translate3d(0, 200px, 0); 
+            } 
+        } 
         .button {
             position : relative;
             z-index: 1;
@@ -139,8 +173,8 @@
 
 /* Style pour la deuxième section */
 #transactions {
-    background-image: url('cat-cat-melon.gif');
-    background-size: cover;
+    /* background-image: url('cat-cat-melon.gif'); */
+    /* background-size: cover; */
 }
     </style>
 <!-- 
@@ -164,9 +198,9 @@ function playAudio() {
 </head>
 <body>
 
-<!-- <video autoplay muted loop class="bgvideo" >
-    <source src="cat-cat-melon.mp4" type="video/mp4">
-</video> -->
+    <video autoplay muted loop class="ball" >
+        <source src="cat-cat-melon.mp4" type="video/mp4">
+    </video>
 <!-- 
 <audio id="myaudio" loop>
     <source src="pirate.mp3" type="audio/mpeg">
